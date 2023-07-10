@@ -1,14 +1,21 @@
-gamestart = false;
+gamestart = false ;
+let score = 0 ;
+score_to_draw ="score" + score ;
+var titre = "Titre A";
 var character =
     document.getElementById("character");
 var block =
     document.getElementById("block");
+document.getElementById("dynamicTitle").innerText = titre;
+//document.getElementById("score").innerText = "scores" + score;
 function jump(){
     //gamestart = true;
     if(character.classList!="animate"){
     character.classList.add("animate");
     if(block.classList!="animate"){
     block.classList.add('animate');}
+    score ++ ;
+    document.getElementById("score").innerText = "score = " + score;
 }
 setTimeout(function(){
         character.classList.remove("animate");
@@ -24,7 +31,10 @@ var checkdead = setInterval(function(){
         location.reload()
     }
 },10)
-if (gamestart) {
-    block.classList.add('animate');
-  } //else {
-    //blockElement.classList.remove('animate');}
+block.addEventListener('animationend', () => {
+    score += 1; // Increment the score by 1
+  });
+// if (gamestart) {
+//     block.classList.add('animate');
+//   } //else {
+//     //blockElement.classList.remove('animate');}
